@@ -33,7 +33,7 @@ must be installed on your system:
     `LD_LIBRARY_PATH` environment variable as described in the
     NVIDIA documentation.
   * The NVIDIA drivers associated with CUDA Toolkit 8.0.
-  * cuDNN v5.1. For details, see
+  * cuDNN v6. For details, see
     [NVIDIA's documentation](https://developer.nvidia.com/cudnn).
     Ensure that you create the `CUDA_HOME` environment variable as
     described in the NVIDIA documentation.
@@ -55,7 +55,7 @@ TensorFlow with GPU support, but only if you do the following:
   * Install TensorFlow from sources as documented in
     @{$install_sources$Installing TensorFlow from Sources}.
   * Install or upgrade to at least the following NVIDIA versions:
-    * CUDA toolkit 7.0 or greater
+    * CUDA toolkit 8.0 or greater
     * cuDNN v3 or greater
     * GPU card with CUDA Compute Capability 3.0 or higher.
 
@@ -167,7 +167,7 @@ Take the following steps to install TensorFlow with Virtualenv:
      Python version, and GPU support. Find the appropriate value for
      <code><em>tfBinaryURL</em></code> for your system
      [here](#the_url_of_the_tensorflow_python_package).  For example, if you
-     are installing TensorFlow for Linux, Python 2.7, and CPU-only support,
+     are installing TensorFlow for Linux, Python 3.4, and CPU-only support,
      issue the following command to install TensorFlow in the active
      virtualenv environment:
 
@@ -272,7 +272,7 @@ take the following steps:
      Python version, and GPU support. Find the appropriate value for
      <code><em>tfBinaryURL</em></code>
      [here](#the_url_of_the_tensorflow_python_package).  For example, to
-     install TensorFlow for Linux, Python 2.7, and CPU-only support, issue
+     install TensorFlow for Linux, Python 3.4, and CPU-only support, issue
      the following command:
 
      <pre>
@@ -460,7 +460,7 @@ Take the following steps to install TensorFlow in an Anaconda environment:
      where <code><em>tfBinaryURL</em></code> is the
      [URL of the TensorFlow Python package](#the_url_of_the_tensorflow_python_package).
      For example, the following command installs the CPU-only version of
-     TensorFlow for Python 2.7:
+     TensorFlow for Python 3.4:
 
      <pre>
      (tensorflow)$ <b>pip install --ignore-installed --upgrade \
