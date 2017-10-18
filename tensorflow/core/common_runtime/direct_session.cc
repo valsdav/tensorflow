@@ -250,9 +250,7 @@ void DirectSession::SchedClosure(thread::ThreadPool* pool,
   // safe given the reasoning above.
   c();
 #else
-  //Override to allow CMSSW FWK to schedule
-  c();
-  //pool->Schedule(std::move(c));
+  pool->Schedule(std::move(c));
 #endif  // __ANDROID__
 }
 
