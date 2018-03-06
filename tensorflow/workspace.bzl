@@ -95,11 +95,10 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "eigen_archive",
       urls = [
-          "https://mirror.bazel.build/bitbucket.org/eigen/eigen/get/034b6c3e1017.tar.gz",
-          "https://bitbucket.org/eigen/eigen/get/034b6c3e1017.tar.gz",
+          "@EIGEN_SOURCE@",
       ],
-      sha256 = "0a8ac1e83ef9c26c0e362bd7968650b710ce54e2d883f0df84e5e45a3abe842a",
-      strip_prefix = "eigen-eigen-034b6c3e1017",
+      sha256 = "",
+      strip_prefix = "@EIGEN_STRIP_PREFIX@",
       build_file = str(Label("//third_party:eigen.BUILD")),
   )
 
@@ -295,11 +294,10 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "protobuf_archive",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
-          "https://github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
+          "@PROTOBUF_SOURCE@",
       ],
-      sha256 = "e178a25c52efcb6b05988bdbeace4c0d3f2d2fe5b46696d1d9898875c3803d6a",
-      strip_prefix = "protobuf-b04e5cba356212e4e8c66c61bbe0c3a20537c5b9",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
       # TODO: remove patching when tensorflow stops linking same protos into
       #       multiple shared libraries loaded in runtime by python.
       #       This patch fixes a runtime crash when tensorflow is compiled
@@ -313,21 +311,19 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "com_google_protobuf",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
-          "https://github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
+          "@PROTOBUF_SOURCE@",
       ],
-      sha256 = "e178a25c52efcb6b05988bdbeace4c0d3f2d2fe5b46696d1d9898875c3803d6a",
-      strip_prefix = "protobuf-b04e5cba356212e4e8c66c61bbe0c3a20537c5b9",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
   )
 
   tf_http_archive(
       name = "com_google_protobuf_cc",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
-          "https://github.com/google/protobuf/archive/b04e5cba356212e4e8c66c61bbe0c3a20537c5b9.tar.gz",
+          "@PROTOBUF_SOURCE@",
       ],
-      sha256 = "e178a25c52efcb6b05988bdbeace4c0d3f2d2fe5b46696d1d9898875c3803d6a",
-      strip_prefix = "protobuf-b04e5cba356212e4e8c66c61bbe0c3a20537c5b9",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
   )
 
   tf_http_archive(
