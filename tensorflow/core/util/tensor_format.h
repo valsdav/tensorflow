@@ -337,7 +337,7 @@ T GetTensorDim(gtl::ArraySlice<T> dimension_attributes,
       (GetTensorSpatialDims(dimension_attributes.size(), tensor_format) == 3)
           ? GetTensorDimIndex<3>(tensor_format, dimension)
           : GetTensorDimIndex<2>(tensor_format, dimension);
-  CHECK(index >= 0 && index < dimension_attributes.size())
+  CHECK(index >= 0 && (size_t)index < dimension_attributes.size())
       << "Invalid index from the dimension: " << index << ", " << tensor_format
       << ", " << dimension;
   return dimension_attributes[index];
@@ -352,7 +352,7 @@ T GetFilterDim(gtl::ArraySlice<T> dimension_attribute,
                                           filter_tensor_format) == 3)
                   ? GetFilterDimIndex<3>(filter_tensor_format, dimension)
                   : GetFilterDimIndex<2>(filter_tensor_format, dimension);
-  CHECK(index >= 0 && index < dimension_attribute.size())
+  CHECK(index >= 0 && (size_t)index < dimension_attribute.size())
       << "Invalid index from the dimension: " << index << ", "
       << filter_tensor_format << ", " << dimension;
   return dimension_attribute[index];

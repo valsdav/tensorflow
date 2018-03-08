@@ -123,8 +123,8 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
           "https://mirror.bazel.build/bitbucket.org/eigen/eigen/get/14e1418fcf12.tar.gz",
           "https://bitbucket.org/eigen/eigen/get/14e1418fcf12.tar.gz",
       ],
-      sha256 = "2b526c6888639025323fd4f2600533c0f982d304ea48e4f1663e8066bd9f6368",
-      strip_prefix = "eigen-eigen-14e1418fcf12",
+      sha256 = "",
+      strip_prefix = "@EIGEN_STRIP_PREFIX@",
       build_file = str(Label("//third_party:eigen.BUILD")),
   )
 
@@ -356,8 +356,8 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
           "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
           "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
       ],
-      sha256 = "846d907acf472ae233ec0882ef3a2d24edbbe834b80c305e867ac65a1f2c59e3",
-      strip_prefix = "protobuf-396336eb961b75f03b25824fe86cf6490fb75e3a",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
   )
 
   # We need to import the protobuf library under the names com_google_protobuf
@@ -369,8 +369,8 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
           "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
           "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
       ],
-      sha256 = "846d907acf472ae233ec0882ef3a2d24edbbe834b80c305e867ac65a1f2c59e3",
-      strip_prefix = "protobuf-396336eb961b75f03b25824fe86cf6490fb75e3a",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
   )
 
   tf_http_archive(
@@ -379,8 +379,8 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
           "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
           "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
       ],
-      sha256 = "846d907acf472ae233ec0882ef3a2d24edbbe834b80c305e867ac65a1f2c59e3",
-      strip_prefix = "protobuf-396336eb961b75f03b25824fe86cf6490fb75e3a",
+      sha256 = "",
+      strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
   )
 
   tf_http_archive(
