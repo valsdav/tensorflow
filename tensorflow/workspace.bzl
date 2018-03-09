@@ -120,8 +120,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "eigen_archive",
       urls = [
-          "https://mirror.bazel.build/bitbucket.org/eigen/eigen/get/14e1418fcf12.tar.gz",
-          "https://bitbucket.org/eigen/eigen/get/14e1418fcf12.tar.gz",
+            "@EIGEN_SOURCE@",
       ],
       sha256 = "",
       strip_prefix = "@EIGEN_STRIP_PREFIX@",
@@ -353,8 +352,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "protobuf_archive",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
-          "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
+      	   "@PROTOBUF_SOURCE@",
       ],
       sha256 = "",
       strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
@@ -366,8 +364,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "com_google_protobuf",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
-          "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
+      	   "@PROTOBUF_SOURCE@",
       ],
       sha256 = "",
       strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
@@ -376,8 +373,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
   tf_http_archive(
       name = "com_google_protobuf_cc",
       urls = [
-          "https://mirror.bazel.build/github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
-          "https://github.com/google/protobuf/archive/396336eb961b75f03b25824fe86cf6490fb75e3a.tar.gz",
+      	   "@PROTOBUF_SOURCE@",
       ],
       sha256 = "",
       strip_prefix = "@PROTOBUF_STRIP_PREFIX@",
