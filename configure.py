@@ -226,6 +226,7 @@ def setup_python(environ_cp):
       if not python_lib_path:
         python_lib_path = default_python_lib_path
     environ_cp['PYTHON_LIB_PATH'] = python_lib_path
+     print ('Printing env var: mrodozov: %s' % python_lib_path)
 
   _ = get_python_major_version(python_bin_path)
 
@@ -238,6 +239,17 @@ def setup_python(environ_cp):
   write_action_env_to_bazelrc('PYTHON_LIB_PATH', python_lib_path)
   write_to_bazelrc('build --python_path=\"%s"' % python_bin_path)
   environ_cp['PYTHON_BIN_PATH'] = python_bin_path
+
+  # If choosen python_lib_path is from a path specified in the PYTHONPATH
+  # variable, need to tell bazel to include PYTHONPATH
+  print ('Adding print mircho 1')
+  if environ_cp.get('PYTHONPATH'):
+    print ('Adding print mircho 2')
+    python_paths = environ_cp.get('PYTHONPATH').split(':')
+    print ('Adding print mircho 3: %s' % '\n'.join(python_paths))
+    print ('Printing python_lib_path %s' % python_lib_path)
+    if python_lib_path in python_paths:
+      write_action_env_to_bazelrc('PYTHONPATH', environ_cp.get('PYTHONPATH'))
 
   # Write tools/python_bin_path.sh
   with open(
