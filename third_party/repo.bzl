@@ -95,14 +95,14 @@ def _tf_http_archive(ctx):
 
     use_syslib = _use_system_lib(ctx, ctx.attr.name)
     if not use_syslib:
-       locURLS=[]
-       for url in ctx.attr.urls:
-          if url.startswith("$"):locURLS.append(ctx.os.environ[url[1:]])
-          else:
-       locURLS.append(url)
-       locPrefix=ctx.attr.strip_prefix
-       if locPrefix.startswith("$"):
-          locPrefix=ctx.os.environ[locPrefix[1:]]
+        locURLS=[]
+        for url in ctx.attr.urls:
+            if url.startswith("$"):locURLS.append(ctx.os.environ[url[1:]])
+            else:
+        locURLS.append(url)
+        locPrefix=ctx.attr.strip_prefix
+        if locPrefix.startswith("$"):
+            locPrefix=ctx.os.environ[locPrefix[1:]]
 
     print("ok here we are")
     print(locURLS)
@@ -117,9 +117,9 @@ def _tf_http_archive(ctx):
             ##ctx.attr.strip_prefix,
        )
     if ctx.attr.delete:
-       _apply_delete(ctx, ctx.attr.delete)
+        _apply_delete(ctx, ctx.attr.delete)
     if ctx.attr.patch_file != None:
-       _apply_patch(ctx, ctx.attr.patch_file)
+        _apply_patch(ctx, ctx.attr.patch_file)
 
     if use_syslib and ctx.attr.system_build_file != None:
         # Use BUILD.bazel to avoid conflict with third party projects with
