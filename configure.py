@@ -226,7 +226,7 @@ def setup_python(environ_cp):
       if not python_lib_path:
         python_lib_path = default_python_lib_path
     environ_cp['PYTHON_LIB_PATH'] = python_lib_path
-     print ('Printing env var: mrodozov: %s' % python_lib_path)
+    print ('Printing env var: mrodozov: %s' % python_lib_path)
 
   _ = get_python_major_version(python_bin_path)
 
