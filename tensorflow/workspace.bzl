@@ -23,6 +23,23 @@ load(
 load("//third_party/flatbuffers:workspace.bzl", flatbuffers = "repo")
 load("//third_party/icu:workspace.bzl", icu = "repo")
 
+def _eigen_src():
+    return "$EIGEN_SOURCE"
+def _eigen_prefix():
+    return  "$EIGEN_STRIP_PREFIX"
+def _protobuf_src():
+    return "$PROTOBUF_SOURCE"
+def _protobuf_prefix():
+    return  "$PROTOBUF_STRIP_PREFIX"
+def _jpeg_src():
+    return "$LIBJPEG_TURBO_SOURCE"
+def _jpeg_prefix():
+    return  "$LIBJPEG_TURBO_STRIP_PREFIX"
+def _zlib_src():
+    return "https://zlib.net/zlib-1.2.11.tar.gz" #"$ZLIB_SOURCE"
+def _zlib_prefix():
+    return  "zlib-1.2.11"#"$ZLIB_STRIP_PREFIX"
+
 def initialize_third_party():
     flatbuffers()
     icu()
@@ -249,13 +266,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     tf_http_archive(
         name = "jpeg",
         build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
-        sha256 = "f892fff427ab3adffc289363eac26d197ce3ccacefe5f5822377348a8166069b",
-        strip_prefix = "libjpeg-turbo-2.0.0",
+        sha256 = "",
+        strip_prefix = "",
         system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
-        urls = [
-            "https://mirror.bazel.build/github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
-            "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
-        ],
+        urls = [_jpeg_src()],
     )
 
     tf_http_archive(
@@ -389,9 +403,9 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
 
     tf_http_archive(
         name = "protobuf_archive",
-        sha256 = PROTOBUF_SHA256,
-        strip_prefix = PROTOBUF_STRIP_PREFIX,
-        urls = PROTOBUF_URLS,
+        sha256 = "",
+        strip_prefix = _protobuf_prefix(),
+        urls = [_protobuf_src()],
     )
 
     # We need to import the protobuf library under the names com_google_protobuf
@@ -399,16 +413,16 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     # Unfortunately there is no way to alias http_archives at the moment.
     tf_http_archive(
         name = "com_google_protobuf",
-        sha256 = PROTOBUF_SHA256,
-        strip_prefix = PROTOBUF_STRIP_PREFIX,
-        urls = PROTOBUF_URLS,
+        sha256 = "",
+        strip_prefix = _protobuf_prefix(),
+        urls = [_protobuf_src()],
     )
 
     tf_http_archive(
         name = "com_google_protobuf_cc",
-        sha256 = PROTOBUF_SHA256,
-        strip_prefix = PROTOBUF_STRIP_PREFIX,
-        urls = PROTOBUF_URLS,
+        sha256 = "",
+        strip_prefix = _protobuf_prefix(),
+        urls = [_protobuf_src()],
     )
 
     tf_http_archive(
@@ -552,13 +566,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     tf_http_archive(
         name = "zlib_archive",
         build_file = clean_dep("//third_party:zlib.BUILD"),
-        sha256 = "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1",
-        strip_prefix = "zlib-1.2.11",
+        sha256 = "",
+        strip_prefix = _zlib_prefix(),
         system_build_file = clean_dep("//third_party/systemlibs:zlib.BUILD"),
-        urls = [
-            "https://mirror.bazel.build/zlib.net/zlib-1.2.11.tar.gz",
-            "https://zlib.net/zlib-1.2.11.tar.gz",
-        ],
+        urls = [_zlib_src()],
     )
 
     tf_http_archive(
