@@ -636,7 +636,7 @@ def tf_gen_op_wrapper_py(
         deps = [str(Label("//tensorflow/core:" + name + "_op_lib"))]
     tf_cc_binary(
         name = tool_name,
-        linkopts = if_not_windows(["-lm", "-Wl,-ldl", "-ltr"]) + cc_linkopts,
+        linkopts = if_not_windows(["-lm", "-Wl,-ldl", "-lrt"]) + cc_linkopts,
         copts = tf_copts(),
         linkstatic = 1,  # Faster to link this one-time-use binary dynamically
         deps = ([
