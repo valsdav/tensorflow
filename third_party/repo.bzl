@@ -82,61 +82,55 @@ def _apply_delete(ctx, paths):
     _execute_and_check_ret_code(ctx, cmd)
 
 def _tf_http_archive(ctx):
-    
-#    if ("mirror.bazel.build" not in ctx.attr.urls[0] and
-#        (len(ctx.attr.urls) < 2 and
-#         ctx.attr.name not in _SINGLE_URL_WHITELIST)):
-#        fail("tf_http_archive(urls) must have redundant URLs. The " +
-#             "mirror.bazel.build URL must be present and it must come first. " +
-#             "Even if you don't have permission to mirror the file, please " +
-#             "put the correctly formatted mirror URL there anyway, because " +
-#             "someone will come along shortly thereafter and mirror the file.")   
+#  if ("mirror.bazel.build" not in ctx.attr.urls[0] and
+#      (len(ctx.attr.urls) < 2 and
+#       ctx.attr.name not in _SINGLE_URL_WHITELIST)):
+#    fail("tf_http_archive(urls) must have redundant URLs. The " +
+#         "mirror.bazel.build URL must be present and it must come first. " +
+#         "Even if you don't have permission to mirror the file, please " +
+#         "put the correctly formatted mirror URL there anyway, because " +
+#         "someone will come along shortly thereafter and mirror the file.")
 
-    use_syslib = _use_system_lib(ctx, ctx.attr.name)
-    if not use_syslib:
-        locURLS=[]
-        for url in ctx.attr.urls:
-            if url.startswith("$"):locURLS.append(ctx.os.environ[url[1:]])
-            else:
-        locURLS.append(url)
-        locPrefix=ctx.attr.strip_prefix
-        if locPrefix.startswith("$"):
-            locPrefix=ctx.os.environ[locPrefix[1:]]
+  use_syslib = _use_system_lib(ctx, ctx.attr.name)
+  if not use_syslib:
+    locURLS=[]
+    for url in ctx.attr.urls:
+       if url.startswith("$"):
+          locURLS.append(ctx.os.environ[url[1:]])
+       else:
+          locURLS.append(url)
+    locPrefix=ctx.attr.strip_prefix
+    if locPrefix.startswith("$"):
+       locPrefix=ctx.os.environ[locPrefix[1:]]
 
     print("ok here we are")
     print(locURLS)
-    print(locPrefix)
-
+    print(locPrefix)	  
     ctx.download_and_extract(
-       locURLS,#ctx.attr.urls,
-            "",
-            ctx.attr.sha256,
-            ctx.attr.type,
-	    locPrefix
-            ##ctx.attr.strip_prefix,
-       )
+        locURLS,#ctx.attr.urls,
+        "",
+        ctx.attr.sha256,
+        ctx.attr.type,
+        locPrefix)##ctx.attr.strip_prefix)
     if ctx.attr.delete:
-        _apply_delete(ctx, ctx.attr.delete)
+      _apply_delete(ctx, ctx.attr.delete)
     if ctx.attr.patch_file != None:
-        _apply_patch(ctx, ctx.attr.patch_file)
+      _apply_patch(ctx, ctx.attr.patch_file)
 
-    if use_syslib and ctx.attr.system_build_file != None:
-        # Use BUILD.bazel to avoid conflict with third party projects with
-        # BUILD or build (directory) underneath.
-        ctx.template("BUILD.bazel", ctx.attr.system_build_file, {
-            "%prefix%": ".." if _repos_are_siblings() else "external",
-        }, False)
+  if use_syslib and ctx.attr.system_build_file != None:
+    # Use BUILD.bazel to avoid conflict with third party projects with
+    # BUILD or build (directory) underneath.
+    ctx.template("BUILD.bazel", ctx.attr.system_build_file, {
+        "%prefix%": ".." if _repos_are_siblings() else "external",
+    }, False)
 
-    elif ctx.attr.build_file != None:
-        # Use BUILD.bazel to avoid conflict with third party projects with
-        # BUILD or build (directory) underneath.
-        ctx.template("BUILD.bazel", ctx.attr.build_file, {
-            "%prefix%": ".." if _repos_are_siblings() else "external",
-        }, False)
+  elif ctx.attr.build_file != None:
+    # Use BUILD.bazel to avoid conflict with third party projects with
+    # BUILD or build (directory) underneath.
+    ctx.template("BUILD.bazel", ctx.attr.build_file, {
+        "%prefix%": ".." if _repos_are_siblings() else "external",
+    }, False)
 
-    if use_syslib:
-        for internal_src, external_dest in ctx.attr.system_link_files.items():
-            ctx.symlink(Label(internal_src), ctx.path(external_dest))
 
 tf_http_archive = repository_rule(
     implementation = _tf_http_archive,
