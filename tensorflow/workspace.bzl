@@ -266,10 +266,13 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     tf_http_archive(
         name = "jpeg",
         build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
-        sha256 = "",
-        strip_prefix = "",
+        sha256 = "f892fff427ab3adffc289363eac26d197ce3ccacefe5f5822377348a8166069b",
+        strip_prefix = "libjpeg-turbo-2.0.0",
         system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
-        urls = [_jpeg_src()],
+        urls = [
+            "https://mirror.bazel.build/github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
+            "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
+        ],
     )
 
     tf_http_archive(
