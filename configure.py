@@ -242,6 +242,8 @@ def setup_python(environ_cp):
 
   # If choosen python_lib_path is from a path specified in the PYTHONPATH
   # variable, need to tell bazel to include PYTHONPATH
+  
+  '''
   print ('Adding print mircho 1')
   if environ_cp.get('PYTHONPATH'):
     print ('Adding print mircho 2')
@@ -250,6 +252,7 @@ def setup_python(environ_cp):
     print ('Printing python_lib_path %s' % python_lib_path)
     if python_lib_path in python_paths:
       write_action_env_to_bazelrc('PYTHONPATH', environ_cp.get('PYTHONPATH'))
+  '''
 
   # Write tools/python_bin_path.sh
   with open(
