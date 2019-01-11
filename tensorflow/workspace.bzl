@@ -263,15 +263,15 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         ],
     )
     
-  tf_http_archive(
-      name = "jpeg",
-      urls = [ _jpeg_src()
-      ],
-      sha256 = "",
-      strip_prefix = _jpeg_prefix(),
-      build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
-      system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
-  )
+    tf_http_archive(
+        name = "jpeg",
+        urls = [ _jpeg_src()
+        ],
+        sha256 = "",
+        strip_prefix = _jpeg_prefix(),
+        build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
+        system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
+    )
 
     tf_http_archive(
         name = "png_archive",
