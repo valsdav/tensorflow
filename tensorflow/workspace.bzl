@@ -262,18 +262,16 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
             "http://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.bz2",
         ],
     )
-
-    tf_http_archive(
-        name = "jpeg",
-        build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
-        sha256 = "f892fff427ab3adffc289363eac26d197ce3ccacefe5f5822377348a8166069b",
-        strip_prefix = "libjpeg-turbo-2.0.0",
-        system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
-        urls = [
-            "https://mirror.bazel.build/github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
-            "https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.0.0.tar.gz",
-        ],
-    )
+    
+  tf_http_archive(
+      name = "jpeg",
+      urls = [ _jpeg_src()
+      ],
+      sha256 = "",
+      strip_prefix = _jpeg_prefix(),
+      build_file = clean_dep("//third_party/jpeg:jpeg.BUILD"),
+      system_build_file = clean_dep("//third_party/systemlibs:jpeg.BUILD"),
+  )
 
     tf_http_archive(
         name = "png_archive",
