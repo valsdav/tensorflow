@@ -139,6 +139,7 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         name = "eigen_archive",
         build_file = clean_dep("//third_party:eigen.BUILD"),        
         strip_prefix = _eigen_prefix(),
+	sha256 = "",
         urls = [ _eigen_src()
         ],
     )
