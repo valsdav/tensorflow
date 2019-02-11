@@ -221,6 +221,7 @@ tf_cc_binary(
     name = "transform_graph",
     copts = tf_copts(),
     linkstatic = 1,
+    linkopts=["-lm", "-lrt"],
     visibility = ["//visibility:public"],
     deps = [
         ":transform_graph_main_lib",
