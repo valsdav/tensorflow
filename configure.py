@@ -1458,6 +1458,7 @@ def main():
   check_bazel_version('0.15.0')
 
   reset_tf_configure_bazelrc(args.workspace)
+  write_to_bazelrc('import %workspace%/tools/bazel.rc')
   cleanup_makefile()
   setup_python(environ_cp)
 

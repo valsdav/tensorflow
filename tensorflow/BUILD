@@ -499,7 +499,7 @@ tf_cc_shared_object(
         "//tensorflow:darwin": [],
         "//tensorflow:windows": [],
         "//conditions:default": [
-            "-Wl,--version-script",  #  This line must be directly followed by the version_script.lds file
+            "-lrt","-Wl,--version-script",  #  This line must be directly followed by the version_script.lds file
             "$(location //tensorflow:tf_framework_version_script.lds)",
         ],
     }),
