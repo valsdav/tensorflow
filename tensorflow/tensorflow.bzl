@@ -1140,6 +1140,8 @@ def _py_wrap_cc_impl(ctx):
   args += [src.path]
   outputs = [ctx.outputs.cc_out, ctx.outputs.py_out]
   ctx.action(
+      use_default_shell_env = True,
+      env=ctx.configuration.default_shell_env,
       executable=ctx.executable._swig,
       arguments=args,
       inputs=list(inputs),
