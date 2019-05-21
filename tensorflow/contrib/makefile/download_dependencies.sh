@@ -26,7 +26,7 @@ if [ ! -f $BZL_FILE_PATH ]; then
   exit 1;
 fi
 
-EIGEN_URL="$(grep -o 'http.*bitbucket.org/eigen/eigen/get/.*tar\.gz' "${BZL_FILE_PATH}" | grep -v mirror.bazel | head -n1)"
+EIGEN_URL="https://github.com/cms-externals/eigen-git-mirror/archive/e4c107b451c52c9ab2d7b7fa4194ee35332916ec.tar.gz"
 GEMMLOWP_URL="$(grep -o 'https://mirror.bazel.build/github.com/google/gemmlowp/.*zip' "${BZL_FILE_PATH}" | head -n1)"
 GOOGLETEST_URL="https://github.com/google/googletest/archive/release-1.8.0.tar.gz"
 NSYNC_URL="$(grep -o 'https://mirror.bazel.build/github.com/google/nsync/.*tar\.gz' "${BZL_FILE_PATH}" | head -n1)"
