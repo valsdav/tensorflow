@@ -45,6 +45,8 @@ VALID_LIBS = [
     "termcolor_archive",
     "wrapt",
     "zlib",
+    "libjpeg_turbo",
+    "org_python_pypi_backports_weakref",
 ]
 
 def auto_configure_fail(msg):
