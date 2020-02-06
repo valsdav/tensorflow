@@ -7,6 +7,7 @@ filegroup(
 
 cc_library(
     name = "pcre",
-    linkopts = ["-lpcre"],
+    linkopts = ["-Lexternal/pcre/lib -lpcre"],
+    includes = ["include"],
     visibility = ["//visibility:public"],
 )
