@@ -57,7 +57,6 @@ def initialize_third_party():
     kissfft()
     nasm()
     opencl_headers()
-    pasta()
     psimd()
     sobol_data()
     vulkan_headers()
