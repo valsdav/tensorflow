@@ -47,7 +47,7 @@ def curl():
 
 def zlib():
     cms_new_local_repository(
-        name = "zlib_archive",
+        name = "zlib",
         build_file = "//third_party/systemlibs:zlib.BUILD",
         symlinks = {
             "include/zlib.h": "zlib.h",
@@ -109,6 +109,7 @@ def absl_py():
         symlinks = {
             "//third_party/systemlibs:absl_py.absl.BUILD": "absl/BUILD",
             "//third_party/systemlibs:absl_py.absl.flags.BUILD": "absl/flags/BUILD",
+            "//third_party/systemlibs:absl_py.absl.logging.BUILD": "absl/logging/BUILD",
             "//third_party/systemlibs:absl_py.absl.testing.BUILD": "absl/testing/BUILD",
         },
     )
@@ -168,7 +169,6 @@ def repos():
     swig()
     absl_py()
     pasta()
-    keras_applications()
     wrapt()
     gast()
     backports_weakref()
