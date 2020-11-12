@@ -7,7 +7,7 @@ filegroup(
 
 cc_library(
     name = "zlib",
-    linkopts = ["-Lexternal/zlib_archive/lib -lz"],
+    linkopts = ["-Lexternal/zlib/lib -lz"],
     includes = ["include"],
     visibility = ["//visibility:public"],
 )
