@@ -22,6 +22,7 @@ VALID_LIBS = [
     "cython",
     "dill_archive",
     "double_conversion",
+    "eigen_archive",
     "enum34_archive",
     "flatbuffers",
     "functools32_archive",

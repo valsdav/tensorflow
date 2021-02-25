@@ -36,6 +36,13 @@ def grpc():
         },
     )
 
+def eigen():
+    cms_new_local_repository(
+        name = "eigen_archive",
+        build_file = "//third_party/systemlibs:eigen.BUILD",
+        create_files = ["COPYING.MPL2"],
+     )
+
 def protobuf():
     cms_new_local_repository(
         name = "com_google_protobuf",
@@ -165,6 +172,7 @@ def repos():
     jpeg()
     gif()
     grpc()
+    eigen()
     protobuf()
     pcre()
     curl()
