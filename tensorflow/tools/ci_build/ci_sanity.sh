@@ -382,7 +382,7 @@ do_external_licenses_check(){
     -e "@com_google_absl//absl" \
     -e "@org_tensorflow//" \
     -e "@com_github_googlecloudplatform_google_cloud_cpp//google" \
-    -e "@com_github_grpc_grpc//src/compiler" \
+    -e "@com_github_grpc_grpc//" \
     -e "@platforms//os" \
     -e "@ruy//" \
     -v ${MISSING_LICENSES_FILE} > temp.txt

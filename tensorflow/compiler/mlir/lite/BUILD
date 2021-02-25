@@ -261,7 +261,6 @@ cc_library(
     hdrs = [
         "utils/constant_utils.h",
     ],
-    copts = ["-std=c++14"],
     deps = [
         "//tensorflow/compiler/mlir/tensorflow",
         "//tensorflow/compiler/mlir/tensorflow:mangling_util",
@@ -283,7 +282,6 @@ cc_library(
     hdrs = [
         "utils/lstm_utils.h",
     ],
-    copts = ["-std=c++14"],
     deps = [
         ":tensorflow_lite",
         "//tensorflow/compiler/mlir/tensorflow",
@@ -302,7 +300,6 @@ cc_library(
     hdrs = [
         "utils/nms_utils.h",
     ],
-    copts = ["-std=c++14"],
     deps = [
         ":tensorflow_lite",
         "//tensorflow/compiler/mlir/tensorflow",
@@ -324,7 +321,6 @@ cc_library(
     hdrs = [
         "utils/tftext_utils.h",
     ],
-    copts = ["-std=c++14"],
     deps = [
         ":tensorflow_lite",
         "//tensorflow/compiler/mlir/tensorflow",

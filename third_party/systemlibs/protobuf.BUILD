@@ -35,29 +35,33 @@ genrule(
     name = "link_proto_files",
     outs = RELATIVE_WELL_KNOWN_PROTOS,
     cmd = """
+      pdir=$$(which protoc | sed 's|/bin/protoc||')
       for i in $(OUTS); do
         f=$${i#$(@D)/}
         mkdir -p $(@D)/$${f%/*}
-        ln -sf $(PROTOBUF_INCLUDE_PATH)/$$f $(@D)/$$f
+        ln -sf $$pdir/include/$$f $(@D)/$$f
       done
     """,
 )
 
 cc_library(
     name = "protobuf",
-    linkopts = ["-lprotobuf"],
+    linkopts = ["-Lexternal/com_google_protobuf/lib -lprotobuf"],
+    includes = ["include"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "protobuf_headers",
-    linkopts = ["-lprotobuf"],
+    linkopts = ["-Lexternal/com_google_protobuf/lib -lprotobuf"],
+    includes = ["include"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "protoc_lib",
-    linkopts = ["-lprotoc"],
+    linkopts = ["-Lexternal/com_google_protobuf/lib -lprotoc"],
+    includes = ["include"],
     visibility = ["//visibility:public"],
 )
 
@@ -78,7 +82,7 @@ cc_proto_library(
 
 proto_gen(
     name = "protobuf_python_genproto",
-    includes = ["."],
+    includes = ["include"],
     protoc = "@com_google_protobuf//:protoc",
     visibility = ["//visibility:public"],
 )
