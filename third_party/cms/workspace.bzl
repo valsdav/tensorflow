@@ -60,6 +60,16 @@ def pcre():
         create_files = ["LICENCE"],
     )
 
+def flatbuffers():
+    cms_new_local_repository(
+        name = "flatbuffers",
+        build_file = "//third_party/flatbuffers:BUILD.system",
+        create_files = ["LICENSE.txt"],
+        symlinks = {
+            "//third_party/flatbuffers:build_defs.bzl": "build_defs.bzl",
+        },
+    )
+
 def curl():
     cms_new_local_repository(
         name = "curl",
@@ -178,6 +188,7 @@ def repos():
     curl()
     zlib()
     cython()
+    flatbuffers()
     functools32()
     enum34()
     astor()
