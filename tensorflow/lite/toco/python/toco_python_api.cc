@@ -19,6 +19,7 @@ limitations under the License.
 #include <string>
 #include <vector>
 
+#include "absl/memory/memory.h"
 #include "google/protobuf/text_format.h"
 #include "tensorflow/c/kernels.h"
 #include "tensorflow/compiler/mlir/lite/python/graphdef_to_tfl_flatbuffer.h"
