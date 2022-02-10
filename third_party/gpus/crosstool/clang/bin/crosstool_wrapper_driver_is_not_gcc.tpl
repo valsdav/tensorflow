@@ -187,6 +187,8 @@ def InvokeNvcc(argv, log=False):
   std_options = GetOptionValue(argv, '-std')
   # Supported -std flags as of CUDA 9.0. Only keep last to mimic gcc/clang.
   nvcc_allowed_std_options = ["c++03", "c++11", "c++14"]
+  if int(NVCC_VERSION.split('.')[0]) >= 11:
+      nvcc_allowed_std_options += ["c++17", "c++1z"]
   std_options = ''.join([' -std=' + define
       for define in std_options if define in nvcc_allowed_std_options][-1:])
   fatbin_options = ''.join([' --fatbin-options=' + option
