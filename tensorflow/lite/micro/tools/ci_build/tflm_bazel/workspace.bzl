@@ -3,7 +3,6 @@
 load("//tensorflow:version_check.bzl", "check_bazel_version_at_least")
 load("//third_party/clog:workspace.bzl", clog = "repo")
 load("//third_party/cpuinfo:workspace.bzl", cpuinfo = "repo")
-load("//third_party/flatbuffers:workspace.bzl", flatbuffers = "repo")
 load("//third_party/kissfft:workspace.bzl", kissfft = "repo")
 load("//third_party/ruy:workspace.bzl", ruy = "repo")
 load("//third_party:repo.bzl", "tf_http_archive")
@@ -12,7 +11,6 @@ def initialize_third_party():
     """ Load third party repositories.  See above load() statements. """
     clog()
     cpuinfo()
-    flatbuffers()
     kissfft()
     ruy()
 
@@ -52,20 +50,6 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
         urls = [
             "https://storage.googleapis.com/mirror.tensorflow.org/github.com/bazelbuild/rules_android/archive/v0.1.1.zip",
             "https://github.com/bazelbuild/rules_android/archive/v0.1.1.zip",
-        ],
-    )
-
-    EIGEN_COMMIT = "90ee821c563fa20db4d64d6991ddca256d5c52f2"
-    EIGEN_SHA256 = "d76992f1972e4ff270221c7ee8125610a8e02bb46708a7295ee646e99287083b"
-
-    tf_http_archive(
-        name = "eigen_archive",
-        build_file = "//third_party/eigen3:eigen_archive.BUILD",
-        sha256 = EIGEN_SHA256,
-        strip_prefix = "eigen-{commit}".format(commit = EIGEN_COMMIT),
-        urls = [
-            "https://storage.googleapis.com/mirror.tensorflow.org/gitlab.com/libeigen/eigen/-/archive/{commit}/eigen-{commit}.tar.gz".format(commit = EIGEN_COMMIT),
-            "https://gitlab.com/libeigen/eigen/-/archive/{commit}/eigen-{commit}.tar.gz".format(commit = EIGEN_COMMIT),
         ],
     )
 

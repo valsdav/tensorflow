@@ -15,6 +15,7 @@ def well_known_proto_libs():
 
     This list should be provided by protobuf.bzl, but it's not.
     """
+    return []
     return [
         "@com_google_protobuf//:any_proto",
         "@com_google_protobuf//:api_proto",

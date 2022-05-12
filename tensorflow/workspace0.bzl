@@ -4,7 +4,7 @@ load("//third_party/googleapis:repository_rules.bzl", "config_googleapis")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_toolchains//repositories:repositories.bzl", bazel_toolchains_repositories = "repositories")
 load("@build_bazel_rules_swift//swift:repositories.bzl", "swift_rules_dependencies")
-load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+#load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
 load("@local_config_android//:android.bzl", "android_workspace")
 load("@rules_cc//cc:repositories.bzl", "rules_cc_toolchains")
 
@@ -20,11 +20,11 @@ def _tf_bind():
     # Needed by Protobuf
     native.bind(
         name = "grpc_cpp_plugin",
-        actual = "@com_github_grpc_grpc//src/compiler:grpc_cpp_plugin",
+        actual = "@com_github_grpc_grpc//:grpc_cpp_plugin",
     )
     native.bind(
         name = "grpc_python_plugin",
-        actual = "@com_github_grpc_grpc//src/compiler:grpc_python_plugin",
+        actual = "@com_github_grpc_grpc//:grpc_python_plugin",
     )
 
     native.bind(
@@ -117,7 +117,7 @@ def workspace():
     # at the end of the WORKSPACE file.
     _tf_bind()
 
-    grpc_extra_deps()
+    #grpc_extra_deps()
     config_googleapis()
 
 # Alias so it can be loaded without assigning to a different symbol to prevent
