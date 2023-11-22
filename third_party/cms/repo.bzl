@@ -8,7 +8,7 @@ def _cms_new_local_repository(ctx):
     cms_paths = [
         line.split(":", 1)[1]
         for line in res.stdout.split("\n")
-        if line.startswith(ctx.attr.name + ":")
+        if line.startswith(ctx.attr.name + ":/")
     ]
 
     if cms_paths:
