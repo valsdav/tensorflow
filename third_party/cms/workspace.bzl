@@ -193,7 +193,6 @@ def repos():
     hwloc()
     grpc()
     eigen()
-    protobuf()
     pybind11()
     curl()
     zlib()
